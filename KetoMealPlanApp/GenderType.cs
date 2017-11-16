@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    class Program
+    enum GenderType
     {
-        static void Main(string[] args)
-        {
- 
-        }
+        Male, 
+        Female
     }
 }

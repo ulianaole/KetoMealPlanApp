@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLevelType.cs" />
+    <Compile Include="GenderType.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Person.cs" />
