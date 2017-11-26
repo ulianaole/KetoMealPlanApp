@@ -101,7 +101,7 @@ namespace KetoMealPlanApp
         /// <returns> LBM in kg</returns>
         public double CalculateLBM()
         {
-            var lbm = Weight - Weight * BodyFat;
+            var lbm = Weight - Weight * BodyFat/100;
             return lbm;
 
         }
@@ -117,6 +117,56 @@ namespace KetoMealPlanApp
 
         }
 
-            
+        public int FatKcalDaily()
+        {
+            var k1 = CalculateWLC() * 0.65;
+            return (int)k1;
+        }
+
+        public int ProteinKcalDaily()
+        {
+            var k2 = CalculateDPI() * 4;
+            return (int)k2;
+        }
+
+        public int NetCarbsKcalDaily()
+        {
+            var k3 = CalculateWLC() - (CalculateWLC()* 0.65 - CalculateDPI()*4);
+            return (int)k3;
+        }
+
+        public int FatPercentageDaily()
+        {
+            return 65;
+        }
+
+        public int ProteinPercentageDaily()
+        {
+            var p2 = (ProteinKcalDaily() * 100) / CalculateWLC();
+            return (int)p2;
+        }
+
+        public int NetCarbsPercentageDaily()
+        {
+            var p3 = (NetCarbsKcalDaily() * 100) / CalculateWLC();
+            return (int)p3;
+        }
+
+        public int FatGramsDaily()
+        {
+            var g1 = FatKcalDaily()/9;
+            return (int)g1;
+        }
+
+        public int ProteinGramsDaily()
+        {
+            return CalculateDPI();
+        }
+
+        public int NetCarbsGramsDaily()
+        {
+            var g3 = NetCarbsKcalDaily() / 4;
+            return (int)g3;
+        }
     }
 }
