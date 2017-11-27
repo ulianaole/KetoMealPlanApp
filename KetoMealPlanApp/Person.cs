@@ -112,7 +112,7 @@ namespace KetoMealPlanApp
         /// <returns> DPI in g</returns>        
         public int CalculateDPI()
         {
-            var dpi = CalculateLBM() * 0.6;
+            var dpi = CalculateLBM() * 2;
             return (int)dpi;
 
         }
@@ -131,7 +131,7 @@ namespace KetoMealPlanApp
 
         public int NetCarbsKcalDaily()
         {
-            var k3 = CalculateWLC() - (CalculateWLC()* 0.65 - CalculateDPI()*4);
+            var k3 = CalculateWLC() - FatKcalDaily() - ProteinKcalDaily();
             return (int)k3;
         }
 

@@ -21,9 +21,11 @@ namespace KetoMealPlanApp
 
             };
 
-            Console.WriteLine($"wlc: {person.CalculateWLC()}, FatKcalDaily: {person.FatKcalDaily()}, ProteinKcalDaily: {person.ProteinKcalDaily()}, NetCarbsKcalDaily: {person.NetCarbsKcalDaily()}," +
-                $" ");
- 
+            Console.WriteLine($"wlc: {person.CalculateWLC()}, FatKcalDaily: {person.FatKcalDaily()}, ProteinKcalDaily: {person.ProteinKcalDaily()}, NetCarbsKcalDaily: {person.NetCarbsKcalDaily()},\n" +
+                $"FatGramsDaily: {person.FatGramsDaily()}, ProteinGramsDaily: {person.ProteinGramsDaily()}, NetCarbsGramsDaily: {person.NetCarbsGramsDaily()} \n" +
+                $"FatPercentageDaily: {person.FatPercentageDaily()}, ProteinPercentageDaily: {person.ProteinPercentageDaily()}, NetCarbsPercentageDaily: {person.NetCarbsPercentageDaily()}");
+
+
         }
     }
 }
