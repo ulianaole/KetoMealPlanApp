@@ -119,7 +119,7 @@ namespace KetoMealPlanApp
 
         public int FatKcalDaily()
         {
-            var k1 = CalculateWLC() * 0.65;
+            var k1 = CalculateWLC() - ProteinKcalDaily() - NetCarbsKcalDaily();
             return (int)k1;
         }
 
@@ -130,26 +130,26 @@ namespace KetoMealPlanApp
         }
 
         public int NetCarbsKcalDaily()
-        {
-            var k3 = CalculateWLC() - FatKcalDaily() - ProteinKcalDaily();
-            return (int)k3;
+        { 
+            return 100;
         }
 
-        public int FatPercentageDaily()
+        public double FatPercentageDaily()
         {
-            return 65;
+            var p1 = (FatKcalDaily() * 100) / (float)CalculateWLC();
+            return p1;
         }
 
-        public int ProteinPercentageDaily()
+        public double ProteinPercentageDaily()
         {
-            var p2 = (ProteinKcalDaily() * 100) / CalculateWLC();
-            return (int)p2;
+            var p2 = (ProteinKcalDaily() * 100) / (float)CalculateWLC();
+            return p2;
         }
 
-        public int NetCarbsPercentageDaily()
+        public double NetCarbsPercentageDaily()
         {
-            var p3 = (NetCarbsKcalDaily() * 100) / CalculateWLC();
-            return (int)p3;
+            var p3 = (NetCarbsKcalDaily() * 100) / (float)CalculateWLC();
+            return p3;
         }
 
         public int FatGramsDaily()
@@ -165,8 +165,7 @@ namespace KetoMealPlanApp
 
         public int NetCarbsGramsDaily()
         {
-            var g3 = NetCarbsKcalDaily() / 4;
-            return (int)g3;
+            return 25;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace KetoMealPlanApp
                 Height = 170,
                 Weight = 63,
                 Gender = GenderType.Male,
-                BodyFat = 20.5,
+                BodyFat = 20,
                 ActivityLevel = ActivityLevelType.LightlyActive
 
             };
