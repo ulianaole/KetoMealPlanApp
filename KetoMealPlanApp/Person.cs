@@ -13,7 +13,8 @@ namespace KetoMealPlanApp
         public int Age
         {
             get { return age; }
-            set {
+            private set
+            {
                 if (value < 0)
                 {
                     Console.WriteLine("Age cannot be less than zero");
@@ -27,152 +28,143 @@ namespace KetoMealPlanApp
         /// <summary>
         /// Height in cm
         /// </summary>
-        public double Height { get; set; }
+        public double Height { get; private set; }
         /// <summary>
         /// Weight in kg
         /// </summary>
-        public double Weight { get; set; }
+        public double Weight { get; private set; }
         /// <summary>
         /// 
         /// </summary>
-        public GenderType Gender { get; set; }
+        public GenderType Gender { get; private set; }
         /// <summary>
         /// Body Fat % expressed as 0.00
         /// </summary>
-        public double BodyFat { get; set; }
+        public double BodyFat { get; private set; }
         /// <summary>
         /// Activity level as index
         /// </summary>
-        public double ActivityLevel { get; set; }
+        public double ActivityLevel { get; private set; }
 
 
 
 
         
         /// <summary>
-        /// calories in kcal
+        /// weight loss calories in kcal
         /// </summary>
-        //public int Calories { get; set; }
+        public int WeightLossCalories { get; private set; }
         /// <summary>
-        /// Fats in g
+        /// Daily intake of Fats, Proteins and NetCarbs in kcal
         /// </summary>
-        //public int Fats { get; set; }
+        public int FatKcalDaily { get; private set; }
+        public int ProteinKcalDaily { get; private set; }
+        public int NetCarbsKcalDaily { get; private set; }
         /// <summary>
-        /// Proteins in g
+        /// Daily intake of Fats, Proteins and NetCarbs in g
         /// </summary>
-        //public int Proteins { get; set; }
-        /// <summary>
-        /// NetCarbs in g
-        /// </summary>
-        //public int NetCarbs { get; set; }
-        /// <summary>
-        /// FatsPercentage in 0.00
-        /// </summary>
-        //public double FatsPercentage { get; set; }
-        /// <summary>
-        /// FProteinPercentage in 0.00
-        /// </summary>
-        //public double ProteinsPercentage { get; set; }
-        /// <summary>
-        /// NetCarbsPercentage in 0.00
-        /// </summary>
-        //public double NetCarbsPercentage { get; set; }
-
+        public int FatGramsDaily { get; private set; }
+        public int ProteinGramsDaily { get; private set; }
+        public int NetCarbsGramsDaily { get; private set; }
 
         /// <summary>
-        /// Calculates Basic Metabolic rate
+        /// Daily intake of Fats, Proteins and NetCarbs in %
         /// </summary>
-        /// <returns> BMR in kcal </returns>
-        public int CalculateBasicMetabolicRate()
+        public double FatPercentageDaily { get; private set; }
+        public double ProteinPercentageDaily { get; private set; }
+        public double NetCarbsPercentageDaily { get; private set; }
+
+
+        public Person(int age, double height, double weight, GenderType gender,
+            double bodyFat, double activityLevel)
         {
-            if (Gender == GenderType.Male)
-            {
-                return (int) (10 * Weight + 6.25 * Height - 5 * Age + 5);
-            }
-            else
-            {
-                return (int) (10 * Weight + 6.25 * Height - 5 * Age - 161);
-            }
+            Age = age;
+            Height = height;
+            Weight = weight;
+            Gender = gender;
+            BodyFat = bodyFat;
+            ActivityLevel = activityLevel;
 
-        }
+            WeightLossCalories = CalculateWeightLossCalories();
+            FatKcalDaily = CalculateFatKcalDaily();
+            ProteinKcalDaily = CalculateProteinKcalDaily();
+            NetCarbsKcalDaily = CalculateNetCarbsKcalDaily();
 
-        /// <summary>
-        /// calculates Total Energy Expenditure
-        /// </summary>
-        /// <returns> TEE in kcal</returns>
-        public int CalculateTotalEnergyExpenditure()
-        {
-            return (int) (ActivityLevel * CalculateBasicMetabolicRate());
+            FatPercentageDaily = CalculateFatPercentageDaily();
+            ProteinPercentageDaily = CalculateProteinPercentageDaily();
+            NetCarbsPercentageDaily = CalculateNetCarbsPercentageDaily();
+
+            FatGramsDaily = CalculateFatGramsDaily();
+            ProteinGramsDaily = CalculateProteinGramsDaily();
+            NetCarbsGramsDaily = CalculateNetCarbsGramsDaily();
+
+
         }
 
         /// <summary>
         /// Calculates total calories for weight loss
         /// </summary>
         /// <returns>WLC in kcal</returns>
-        public int CalculateWeightLossCalories()
+        private int CalculateWeightLossCalories()
         {
-            return CalculateTotalEnergyExpenditure() - 500;
+            
+            // Calculate Basic Metabolic Rate in kcal
+            int bmr;
+            if (Gender == GenderType.Male)
+            {
+                bmr = (int)(10 * Weight + 6.25 * Height - 5 * Age + 5);
+            }
+            else
+            {
+                bmr = (int)(10 * Weight + 6.25 * Height - 5 * Age - 161);
+            }
+            //Calculate Total energy Expenditure in kcal
+            var tee = ActivityLevel * bmr;
+            return (int) tee - 500;
         }
 
-        /// <summary>
-        /// Calculate Lean Body Mass
-        /// </summary>
-        /// <returns> LBM in kg</returns>
-        public double CalculateLeanBodyMass()
+        private int CalculateFatKcalDaily()
         {
-           return Weight - Weight * BodyFat/100;
+            return (int) (CalculateWeightLossCalories() - CalculateProteinKcalDaily() - CalculateNetCarbsKcalDaily());
         }
 
-        /// <summary>
-        /// Calculates Daily Protein Intake DPI
-        /// </summary>
-        /// <returns> DPI in g</returns>        
-        public int CalculateDailyProteinIntake()
+        private int CalculateProteinKcalDaily()
         {
-            return (int) (CalculateLeanBodyMass() * 2);
+            return (int) (CalculateProteinGramsDaily() * 4);
         }
 
-        public int FatKcalDaily()
-        {
-            return (int) (CalculateWeightLossCalories() - ProteinKcalDaily() - NetCarbsKcalDaily());
-        }
-
-        public int ProteinKcalDaily()
-        {
-            return (int) (CalculateDailyProteinIntake() * 4);
-        }
-
-        public int NetCarbsKcalDaily()
+        private int CalculateNetCarbsKcalDaily()
         { 
             return 100;
         }
 
-        public double FatPercentageDaily()
+        private double CalculateFatPercentageDaily()
         {
-            return (FatKcalDaily() * 100) / (float)CalculateWeightLossCalories();
+            return (CalculateFatKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
-        public double ProteinPercentageDaily()
+        private double CalculateProteinPercentageDaily()
         {
-            return (ProteinKcalDaily() * 100) / (float)CalculateWeightLossCalories();
+            return (CalculateProteinKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
-        public double NetCarbsPercentageDaily()
+        private double CalculateNetCarbsPercentageDaily()
         {
-            return (NetCarbsKcalDaily() * 100) / (float)CalculateWeightLossCalories();
+            return (CalculateNetCarbsKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
-        public int FatGramsDaily()
+        private int CalculateFatGramsDaily()
         {
-            return (int) (FatKcalDaily()/9);
+            return (int) (CalculateFatKcalDaily()/9);
         }
 
-        public int ProteinGramsDaily()
+        private int CalculateProteinGramsDaily()
         {
-            return CalculateDailyProteinIntake();
+            var leanBodyMass = Weight - Weight * BodyFat / 100;
+            return (int)(leanBodyMass * 2);
         }
 
-        public int NetCarbsGramsDaily()
+        private int CalculateNetCarbsGramsDaily()
         {
             return 25;
         }

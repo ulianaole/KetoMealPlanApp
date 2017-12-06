@@ -13,15 +13,7 @@ namespace KetoMealPlanApp
         public static Person CreatePerson(int age, double height, double weight, GenderType gender, 
             double bodyFat, double activityLevel)
         {
-            var person = new Person
-            {
-                Age = age,
-                Height = height,
-                Weight = weight,
-                Gender = gender,
-                BodyFat = bodyFat,
-                ActivityLevel = activityLevel
-            };
+            var person = new Person(age, height, weight, gender, bodyFat, activityLevel);
             persons.Add(person);
             return person;
         }
