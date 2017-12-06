@@ -8,7 +8,22 @@ namespace KetoMealPlanApp
 {
     class Person
     {
-        public int Age { get; set; }
+        private int age;
+
+        public int Age
+        {
+            get { return age; }
+            set {
+                if (value < 0)
+                {
+                    Console.WriteLine("Age cannot be less than zero");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
         /// <summary>
         /// Height in cm
         /// </summary>
@@ -17,59 +32,66 @@ namespace KetoMealPlanApp
         /// Weight in kg
         /// </summary>
         public double Weight { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public GenderType Gender { get; set; }
         /// <summary>
         /// Body Fat % expressed as 0.00
         /// </summary>
         public double BodyFat { get; set; }
         /// <summary>
-        /// calories in kcal
-        /// </summary>
-        public int Calories { get; set; }
-        /// <summary>
-        /// Fats in g
-        /// </summary>
-        public int Fats { get; set; }
-        /// <summary>
-        /// Proteins in g
-        /// </summary>
-        public int Proteins { get; set; }
-        /// <summary>
-        /// NetCarbs in g
-        /// </summary>
-        public int NetCarbs { get; set; }
-        /// <summary>
-        /// FatsPercentage in 0.00
-        /// </summary>
-        public double FatsPercentage { get; set; }
-        /// <summary>
-        /// FProteinPercentage in 0.00
-        /// </summary>
-        public double ProteinsPercentage { get; set; }
-        /// <summary>
-        /// NetCarbsPercentage in 0.00
-        /// </summary>
-        public double NetCarbsPercentage { get; set; }
-        /// <summary>
         /// Activity level as index
         /// </summary>
         public double ActivityLevel { get; set; }
+
+
+
+
+        
+        /// <summary>
+        /// calories in kcal
+        /// </summary>
+        //public int Calories { get; set; }
+        /// <summary>
+        /// Fats in g
+        /// </summary>
+        //public int Fats { get; set; }
+        /// <summary>
+        /// Proteins in g
+        /// </summary>
+        //public int Proteins { get; set; }
+        /// <summary>
+        /// NetCarbs in g
+        /// </summary>
+        //public int NetCarbs { get; set; }
+        /// <summary>
+        /// FatsPercentage in 0.00
+        /// </summary>
+        //public double FatsPercentage { get; set; }
+        /// <summary>
+        /// FProteinPercentage in 0.00
+        /// </summary>
+        //public double ProteinsPercentage { get; set; }
+        /// <summary>
+        /// NetCarbsPercentage in 0.00
+        /// </summary>
+        //public double NetCarbsPercentage { get; set; }
+
 
         /// <summary>
         /// Calculates Basic Metabolic rate
         /// </summary>
         /// <returns> BMR in kcal </returns>
-        public int CalculateBMR()
+        public int CalculateBasicMetabolicRate()
         {
             if (Gender == GenderType.Male)
             {
-                var bmr = 10 * Weight + 6.25 * Height - 5 * Age + 5;
-                return (int)bmr;
+                return (int) (10 * Weight + 6.25 * Height - 5 * Age + 5);
             }
             else
             {
-                var bmr = 10 * Weight + 6.25 * Height - 5 * Age - 161;
-                return (int)bmr;
+                return (int) (10 * Weight + 6.25 * Height - 5 * Age - 161);
             }
 
         }
@@ -78,55 +100,46 @@ namespace KetoMealPlanApp
         /// calculates Total Energy Expenditure
         /// </summary>
         /// <returns> TEE in kcal</returns>
-        public int CalculateTEE()
+        public int CalculateTotalEnergyExpenditure()
         {
-            var tee = ActivityLevel * CalculateBMR();
-            return (int)tee;
+            return (int) (ActivityLevel * CalculateBasicMetabolicRate());
         }
 
         /// <summary>
         /// Calculates total calories for weight loss
         /// </summary>
         /// <returns>WLC in kcal</returns>
-        public int CalculateWLC()
+        public int CalculateWeightLossCalories()
         {
-            var wlc = CalculateTEE() - 500;
-            return wlc;
-
+            return CalculateTotalEnergyExpenditure() - 500;
         }
 
         /// <summary>
         /// Calculate Lean Body Mass
         /// </summary>
         /// <returns> LBM in kg</returns>
-        public double CalculateLBM()
+        public double CalculateLeanBodyMass()
         {
-            var lbm = Weight - Weight * BodyFat/100;
-            return lbm;
-
+           return Weight - Weight * BodyFat/100;
         }
 
         /// <summary>
         /// Calculates Daily Protein Intake DPI
         /// </summary>
         /// <returns> DPI in g</returns>        
-        public int CalculateDPI()
+        public int CalculateDailyProteinIntake()
         {
-            var dpi = CalculateLBM() * 2;
-            return (int)dpi;
-
+            return (int) (CalculateLeanBodyMass() * 2);
         }
 
         public int FatKcalDaily()
         {
-            var k1 = CalculateWLC() - ProteinKcalDaily() - NetCarbsKcalDaily();
-            return (int)k1;
+            return (int) (CalculateWeightLossCalories() - ProteinKcalDaily() - NetCarbsKcalDaily());
         }
 
         public int ProteinKcalDaily()
         {
-            var k2 = CalculateDPI() * 4;
-            return (int)k2;
+            return (int) (CalculateDailyProteinIntake() * 4);
         }
 
         public int NetCarbsKcalDaily()
@@ -136,31 +149,27 @@ namespace KetoMealPlanApp
 
         public double FatPercentageDaily()
         {
-            var p1 = (FatKcalDaily() * 100) / (float)CalculateWLC();
-            return p1;
+            return (FatKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
         public double ProteinPercentageDaily()
         {
-            var p2 = (ProteinKcalDaily() * 100) / (float)CalculateWLC();
-            return p2;
+            return (ProteinKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
         public double NetCarbsPercentageDaily()
         {
-            var p3 = (NetCarbsKcalDaily() * 100) / (float)CalculateWLC();
-            return p3;
+            return (NetCarbsKcalDaily() * 100) / (float)CalculateWeightLossCalories();
         }
 
         public int FatGramsDaily()
         {
-            var g1 = FatKcalDaily()/9;
-            return (int)g1;
+            return (int) (FatKcalDaily()/9);
         }
 
         public int ProteinGramsDaily()
         {
-            return CalculateDPI();
+            return CalculateDailyProteinIntake();
         }
 
         public int NetCarbsGramsDaily()

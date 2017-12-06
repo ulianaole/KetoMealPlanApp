@@ -10,18 +10,10 @@ namespace KetoMealPlanApp
     {
         static void Main(string[] args)
         {
-            var person = new Person()
-            {
-                Age = 37,
-                Height = 170,
-                Weight = 63,
-                Gender = GenderType.Male,
-                BodyFat = 20,
-                ActivityLevel = ActivityLevelType.LightlyActive
+            var person = Planner.CreatePerson(37, 170, 70.5, GenderType.Female,
+                30, ActivityLevelType.LightlyActive);
 
-            };
-
-            Console.WriteLine($"wlc: {person.CalculateWLC()}, FatKcalDaily: {person.FatKcalDaily()}, ProteinKcalDaily: {person.ProteinKcalDaily()}, NetCarbsKcalDaily: {person.NetCarbsKcalDaily()},\n" +
+            Console.WriteLine($"wlc: {person.CalculateWeightLossCalories()}, FatKcalDaily: {person.FatKcalDaily()}, ProteinKcalDaily: {person.ProteinKcalDaily()}, NetCarbsKcalDaily: {person.NetCarbsKcalDaily()},\n" +
                 $"FatGramsDaily: {person.FatGramsDaily()}, ProteinGramsDaily: {person.ProteinGramsDaily()}, NetCarbsGramsDaily: {person.NetCarbsGramsDaily()} \n" +
                 $"FatPercentageDaily: {person.FatPercentageDaily()}, ProteinPercentageDaily: {person.ProteinPercentageDaily()}, NetCarbsPercentageDaily: {person.NetCarbsPercentageDaily()}");
 
