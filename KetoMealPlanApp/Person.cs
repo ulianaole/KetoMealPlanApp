@@ -44,7 +44,7 @@ namespace KetoMealPlanApp
         /// <summary>
         /// Activity level as index
         /// </summary>
-        public double ActivityLevel { get; private set; }
+        public ActivityLevelType ActivityLevel { get; private set; }
 
 
 
@@ -76,7 +76,7 @@ namespace KetoMealPlanApp
 
 
         public Person(int age, double height, double weight, GenderType gender,
-            double bodyFat, double activityLevel)
+            double bodyFat, ActivityLevelType activityLevel)
         {
             Age = age;
             Height = height;
@@ -119,7 +119,8 @@ namespace KetoMealPlanApp
                 bmr = (int)(10 * Weight + 6.25 * Height - 5 * Age - 161);
             }
             //Calculate Total energy Expenditure in kcal
-            var tee = ActivityLevel * bmr;
+            var level = (int)ActivityLevel;
+            var tee = ((double)level / 1000) * bmr;
             return (int) tee - 500;
         }
 

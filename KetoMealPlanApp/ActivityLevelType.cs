@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    static class ActivityLevelType
+    enum ActivityLevelType
     {
-        public const double Sedentary = 1.2;
-        public const double LightlyActive = 1.375;
-        public const double ModeratelyActive = 1.55;
-        public const double VeryActive = 1.725;
-        public const double ExtraActive = 1.9;
+        Sedentary = 1200,
+        LightlyActive = 1375,
+        ModeratelyActive = 1550,
+        VeryActive = 1725,
+        ExtraActive = 1900
     }
 }

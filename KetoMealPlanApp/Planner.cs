@@ -11,7 +11,7 @@ namespace KetoMealPlanApp
         private static List<Person> persons = new List<Person>();
 
         public static Person CreatePerson(int age, double height, double weight, GenderType gender, 
-            double bodyFat, double activityLevel)
+            double bodyFat, ActivityLevelType activityLevel)
         {
             var person = new Person(age, height, weight, gender, bodyFat, activityLevel);
             persons.Add(person);
