@@ -119,8 +119,32 @@ namespace KetoMealPlanApp
                 bmr = (int)(10 * Weight + 6.25 * Height - 5 * Age - 161);
             }
             //Calculate Total energy Expenditure in kcal
-            var level = (int)ActivityLevel;
-            var tee = ((double)level / 1000) * bmr;
+            //var level = (int)ActivityLevel;
+            double level;
+            switch (ActivityLevel)
+            {
+                case ActivityLevelType.Sedentary:
+                    level = 1.0;
+                    break;
+                case ActivityLevelType.LightlyActive:
+                    level = 1.375;
+                    break;
+                case ActivityLevelType.ModeratelyActive:
+                    level = 1.55;
+                    break;
+                case ActivityLevelType.VeryActive:
+                    level = 1.725;
+                    break;
+                case ActivityLevelType.ExtraActive:
+                    level = 1.9;
+                    break;
+                default:
+                    // Set default to lightly active
+                    level = 1.55;
+                    break;
+            }
+
+            var tee = level * bmr;
             return (int) tee - 500;
         }
 
