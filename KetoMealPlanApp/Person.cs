@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    class Person
+    public class Person
     {
+        [Key]
+        public int UserId { get; private set; }
+        
         private int age;
 
         public int Age
@@ -25,6 +29,7 @@ namespace KetoMealPlanApp
                 }
             }
         }
+
         /// <summary>
         /// Height in cm
         /// </summary>

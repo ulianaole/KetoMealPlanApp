@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    enum ActivityLevelType
+    public enum ActivityLevelType
     {
         Sedentary,
         LightlyActive,
