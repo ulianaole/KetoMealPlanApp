@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    class Planner
+    public class Planner
     {
         private static KetoAppModel db = new KetoAppModel();
 
@@ -18,5 +18,23 @@ namespace KetoMealPlanApp
             db.SaveChanges();
             return person;
         }
+
+        public static void CreateMeal(int calories, int fatGrams, int proteinGrams, int netCarbGrams,
+            string name, MealType type)
+        {
+            var meal = new Meal
+            {
+                Calories = calories,
+                FatGrams = fatGrams,
+                ProteinGrams = proteinGrams,
+                NetCarbGrams = netCarbGrams,
+                Name = name,
+                Type = type
+            };
+            db.Meals.Add(meal);
+            db.SaveChanges();
+            
+        }
+        
     }
 }

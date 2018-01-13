@@ -56,6 +56,15 @@
     <Compile Include="Ingredient.cs" />
     <Compile Include="KetoAppModel.cs" />
     <Compile Include="Meal.cs" />
+    <Compile Include="Migrations\201801050354497_InitialCreate.cs" />
+    <Compile Include="Migrations\201801050354497_InitialCreate.Designer.cs">
+      <DependentUpon>201801050354497_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130359368_Meals.cs" />
+    <Compile Include="Migrations\201801130359368_Meals.Designer.cs">
+      <DependentUpon>201801130359368_Meals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Planner.cs" />
     <Compile Include="Program.cs" />
@@ -64,6 +73,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801050354497_InitialCreate.resx">
+      <DependentUpon>201801050354497_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130359368_Meals.resx">
+      <DependentUpon>201801130359368_Meals.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

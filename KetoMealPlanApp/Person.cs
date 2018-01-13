@@ -51,10 +51,6 @@ namespace KetoMealPlanApp
         /// </summary>
         public ActivityLevelType ActivityLevel { get; private set; }
 
-
-
-
-        
         /// <summary>
         /// weight loss calories in kcal
         /// </summary>

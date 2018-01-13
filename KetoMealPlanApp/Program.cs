@@ -63,5 +63,20 @@ namespace KetoMealPlanApp
 
 
         }
+
+        static void CreateMeals()
+        {
+            Planner.CreateMeal(414, 30, 32, 4, "Burger Skillet", MealType.Breakfast);
+            Planner.CreateMeal(159, 14, 3, 5, "Turnip Hash Browns", MealType.Breakfast);
+            Planner.CreateMeal(213, 18, 10, 2, "Turmeric Scrambled Eggs", MealType.Breakfast);
+            Planner.CreateMeal(233, 14, 21, 7, "Cabbage Rolls", MealType.Lunch);
+            Planner.CreateMeal(267, 17, 28, 2, "One-pan Shrimp and Asparagus", MealType.Lunch);
+            Planner.CreateMeal(276, 21, 21, 5, "Sausage and Kale", MealType.Lunch);
+            Planner.CreateMeal(453, 33, 31, 9, "Chicken (or Turkey) and Broccoli Cassarole", MealType.Dinner);
+            Planner.CreateMeal(336, 24, 19, 10, "Pan-fried Cod with Dill Caper Sauce", MealType.Dinner);
+            Planner.CreateMeal(257, 17, 5, 21, "Lemony Pressure Cooker Artichokes with Aioli", MealType.Dinner);
+
+
+        }
     }
 }
