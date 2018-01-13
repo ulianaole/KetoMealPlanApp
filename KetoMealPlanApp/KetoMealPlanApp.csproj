@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityLevelType.cs" />
+    <Compile Include="DailyMealPlanner.cs" />
     <Compile Include="GenderType.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="KetoAppModel.cs" />
@@ -63,6 +64,10 @@
     <Compile Include="Migrations\201801130359368_Meals.cs" />
     <Compile Include="Migrations\201801130359368_Meals.Designer.cs">
       <DependentUpon>201801130359368_Meals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801131707468_ExtraIngredients.cs" />
+    <Compile Include="Migrations\201801131707468_ExtraIngredients.Designer.cs">
+      <DependentUpon>201801131707468_ExtraIngredients.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -80,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801130359368_Meals.resx">
       <DependentUpon>201801130359368_Meals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801131707468_ExtraIngredients.resx">
+      <DependentUpon>201801131707468_ExtraIngredients.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

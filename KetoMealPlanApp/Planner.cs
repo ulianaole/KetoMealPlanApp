@@ -35,6 +35,34 @@ namespace KetoMealPlanApp
             db.SaveChanges();
             
         }
-        
+
+        public static void CreateExtraIngredient(int calories, ExtraIngredientType ingredientType, string name,
+            int grams)
+        {
+            var extraIngredinet = new ExtraIngredient
+            {
+                Calories = calories,
+                Type = ingredientType,
+                Name = name,
+                MacroGrams = grams
+
+            };
+            db.ExtraIngredients.Add(extraIngredinet);
+            db.SaveChanges();
+        }
+
+        public static List<Meal> ListMeals(MealType mealType)
+        {
+            return db.Meals.Where(m => m.Type == mealType).ToList();
+        }
+
+        public void CreateDailyMealPlan(Person person)
+        {
+            var mealNetCarbsLimit = (int) person.NetCarbsGramsDaily / 3;
+            var mealProteinsLimit = (int) person.ProteinGramsDaily / 3;
+            var mealFatsLimit = (int) person.FatGramsDaily / 3;
+
+
+        }
     }
 }

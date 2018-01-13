@@ -22,6 +22,7 @@ namespace KetoMealPlanApp
 
         public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<Meal> Meals { get; set; }
+        public virtual DbSet<ExtraIngredient> ExtraIngredients { get; set; }
     }
 
     //public class MyEntity

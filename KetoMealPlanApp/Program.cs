@@ -59,8 +59,15 @@ namespace KetoMealPlanApp
                 $"NetCarbsGramsDaily: {person.NetCarbsGramsDaily} \n" +
                 $"FatPercentageDaily: {person.FatPercentageDaily}, " +
                 $"ProteinPercentageDaily: {person.ProteinPercentageDaily}, " +
-                $"NetCarbsPercentageDaily: {person.NetCarbsPercentageDaily}");
+                $"NetCarbsPercentageDaily: {person.NetCarbsPercentageDaily}\n");
 
+            Console.WriteLine("Here is a list of available meals");
+            Console.WriteLine("Breakfast options: ");
+            var breakfastList = Planner.ListMeals(MealType.Breakfast);
+            for (var i = 0; i < breakfastList.Count ; i++)
+            {
+                Console.WriteLine($"{i}.{breakfastList[i].Name}");
+            }
 
         }
 
@@ -75,8 +82,13 @@ namespace KetoMealPlanApp
             Planner.CreateMeal(453, 33, 31, 9, "Chicken (or Turkey) and Broccoli Cassarole", MealType.Dinner);
             Planner.CreateMeal(336, 24, 19, 10, "Pan-fried Cod with Dill Caper Sauce", MealType.Dinner);
             Planner.CreateMeal(257, 17, 5, 21, "Lemony Pressure Cooker Artichokes with Aioli", MealType.Dinner);
+        }
 
-
+        static void CreateExtraIngredients()
+        {
+            Planner.CreateExtraIngredient(50, ExtraIngredientType.NetCarbsExtra, "1 apple or 1 orange or half banana", 14);
+            Planner.CreateExtraIngredient(100, ExtraIngredientType.FatExtra, "1 tbsp of Pure Irish Butter or 2 tsp of Omega-3 Purified Fish Oil", 11);
+            Planner.CreateExtraIngredient(100, ExtraIngredientType.ProteinExtra, "1 scoop of Pure Protein Powder", 22);
         }
     }
 }

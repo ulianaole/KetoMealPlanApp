@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
-    class Ingredient
+    public enum ExtraIngredientType
+    {
+        FatExtra,
+        ProteinExtra,
+        NetCarbsExtra
+    }
+
+
+    public class ExtraIngredient
     {
         [Key]
-        public int MealId { get; set; }
+        public int IngredinetId { get; set; }
         public int Calories { get; set; }
-        public int FatGrams { get; set; }
-        public int ProteinGrams { get; set; }
-        public int NetCarbGrams { get; set; }
+        public ExtraIngredientType Type { get; set; }
         public string Name { get; set; }
+        public int MacroGrams { get; set; }
     }
 }
