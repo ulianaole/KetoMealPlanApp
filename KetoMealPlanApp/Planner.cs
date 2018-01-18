@@ -56,12 +56,33 @@ namespace KetoMealPlanApp
             return db.Meals.Where(m => m.Type == mealType).ToList();
         }
 
-        public void CreateDailyMealPlan(Person person)
+        public static AdjustedMeal CreateDailyMealPlan(Person person, Meal meal)
         {
             var mealNetCarbsLimit = (int) person.NetCarbsGramsDaily / 3;
             var mealProteinsLimit = (int) person.ProteinGramsDaily / 3;
             var mealFatsLimit = (int) person.FatGramsDaily / 3;
 
+            var mealNetCarbsDiff = mealNetCarbsLimit - meal.NetCarbGrams;
+            var mealProteinsDiff = mealProteinsLimit - meal.ProteinGrams;
+            var mealFatsDiff = mealFatsLimit - meal.FatGrams;
+
+            var netCarbsExtra = db.ExtraIngredients.Where(x => x.Type == ExtraIngredientType.NetCarbsExtra).First();
+            var proteinsExtra = db.ExtraIngredients.Where(x => x.Type == ExtraIngredientType.ProteinExtra).First();
+            var fatsExtra = db.ExtraIngredients.Where(x => x.Type == ExtraIngredientType.FatExtra).First();
+
+            var mealNetCarbsAdd = mealNetCarbsDiff/netCarbsExtra.MacroGrams;
+            var mealProteinsAdd = mealProteinsDiff / proteinsExtra.MacroGrams;
+            var mealFatsAdd = mealFatsDiff / fatsExtra.MacroGrams;
+
+            return new AdjustedMeal()
+            {
+                NetCarbsIngredient = netCarbsExtra,
+                NetCarbsIngredientCount = mealNetCarbsAdd,
+                ProteinsIngredient = proteinsExtra,
+                ProteinsIngredientCount = mealProteinsAdd,
+                FatssIngredient = fatsExtra,
+                FatsIngredientCount = mealFatsAdd
+            };
 
         }
     }

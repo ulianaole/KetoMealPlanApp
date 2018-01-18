@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityLevelType.cs" />
+    <Compile Include="AdjustedDailyMeal.cs" />
     <Compile Include="DailyMealPlanner.cs" />
     <Compile Include="GenderType.cs" />
     <Compile Include="Ingredient.cs" />

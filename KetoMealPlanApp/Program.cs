@@ -69,6 +69,68 @@ namespace KetoMealPlanApp
                 Console.WriteLine($"{i}.{breakfastList[i].Name}");
             }
 
+            Console.WriteLine("Lunch options: ");
+            var lunchList = Planner.ListMeals(MealType.Lunch);
+            for (var i = 0; i < lunchList.Count; i++)
+            {
+                Console.WriteLine($"{i}.{lunchList[i].Name}");
+            }
+
+            Console.WriteLine("Dinner options: ");
+            var dinnerList = Planner.ListMeals(MealType.Dinner);
+            for (var i = 0; i < dinnerList.Count; i++)
+            {
+                Console.WriteLine($"{i}.{dinnerList[i].Name}");
+            }
+
+            Console.Write("Please choose your breakfast option, use the corresponding number ");
+            var breakfastChoice = breakfastList[Convert.ToInt32(Console.ReadLine())];
+
+            Console.Write("Please choose your lunch option, use the corresponding number ");
+            var lunchChoice = lunchList[Convert.ToInt32(Console.ReadLine())];
+
+            Console.Write("Please choose your dinner option, use the corresponding number ");
+            var dinnerChoice = dinnerList[Convert.ToInt32(Console.ReadLine())];
+
+            var breakfastExtraIngredients = Planner.CreateDailyMealPlan(person, breakfastChoice);
+            var lunchExtraIngredients = Planner.CreateDailyMealPlan(person, lunchChoice);
+            var dinnerExtraIngredients = Planner.CreateDailyMealPlan(person, dinnerChoice);
+
+            Console.WriteLine("Here is your daily meal plan ");
+
+            Console.WriteLine("=========================");
+            Console.WriteLine("* Breakfast *");
+            Console.WriteLine($"Name: {breakfastChoice.Name}");
+            Console.WriteLine($"Kcal: {breakfastChoice.Calories}");
+            Console.WriteLine($"NetCarbs in g: {breakfastChoice.NetCarbGrams}");
+            Console.WriteLine($"Proteins in g: {breakfastChoice.ProteinGrams}");
+            Console.WriteLine($"Fat s in g: {breakfastChoice.FatGrams}");
+            Console.WriteLine($"Additional NetCarbs: {breakfastExtraIngredients.NetCarbsIngredientCount}x {breakfastExtraIngredients.NetCarbsIngredient.Name}");
+            Console.WriteLine($"Additional Proteins: {breakfastExtraIngredients.ProteinsIngredientCount}x {breakfastExtraIngredients.ProteinsIngredient.Name}");
+            Console.WriteLine($"Additional Fats: {breakfastExtraIngredients.FatsIngredientCount}x {breakfastExtraIngredients.FatssIngredient.Name}");
+
+            Console.WriteLine("=========================");
+            Console.WriteLine("* Lunch *");
+            Console.WriteLine($"Name: {lunchChoice.Name}");
+            Console.WriteLine($"Kcal: {lunchChoice.Calories}");
+            Console.WriteLine($"NetCarbs in g: {lunchChoice.NetCarbGrams}");
+            Console.WriteLine($"Proteins in g: {lunchChoice.ProteinGrams}");
+            Console.WriteLine($"Fat s in g: {lunchChoice.FatGrams}");
+            Console.WriteLine($"Additional NetCarbs: {lunchExtraIngredients.NetCarbsIngredientCount}x {lunchExtraIngredients.NetCarbsIngredient.Name}");
+            Console.WriteLine($"Additional Proteins: {lunchExtraIngredients.ProteinsIngredientCount}x {lunchExtraIngredients.ProteinsIngredient.Name}");
+            Console.WriteLine($"Additional Fats: {lunchExtraIngredients.FatsIngredientCount}x {lunchExtraIngredients.FatssIngredient.Name}");
+
+            Console.WriteLine("=========================");
+            Console.WriteLine("* Dinner *");
+            Console.WriteLine($"Name: {dinnerChoice.Name}");
+            Console.WriteLine($"Kcal: {dinnerChoice.Calories}");
+            Console.WriteLine($"NetCarbs in g: {dinnerChoice.NetCarbGrams}");
+            Console.WriteLine($"Proteins in g: {dinnerChoice.ProteinGrams}");
+            Console.WriteLine($"Fat s in g: {dinnerChoice.FatGrams}");
+            Console.WriteLine($"Additional NetCarbs: {dinnerExtraIngredients.NetCarbsIngredientCount}x {dinnerExtraIngredients.NetCarbsIngredient.Name}");
+            Console.WriteLine($"Additional Proteins: {dinnerExtraIngredients.ProteinsIngredientCount}x {dinnerExtraIngredients.ProteinsIngredient.Name}");
+            Console.WriteLine($"Additional Fats: {dinnerExtraIngredients.FatsIngredientCount}x {dinnerExtraIngredients.FatssIngredient.Name}");
+
         }
 
         static void CreateMeals()
