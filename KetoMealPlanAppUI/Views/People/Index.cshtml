@@ -1,0 +1,123 @@
+﻿@model IEnumerable<KetoMealPlanApp.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BodyFat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightLossCalories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FatKcalDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProteinKcalDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetCarbsKcalDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FatGramsDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProteinGramsDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetCarbsGramsDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FatPercentageDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProteinPercentageDaily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetCarbsPercentageDaily)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyFat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightLossCalories)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatKcalDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProteinKcalDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetCarbsKcalDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatGramsDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProteinGramsDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetCarbsGramsDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatPercentageDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProteinPercentageDaily)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetCarbsPercentageDaily)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

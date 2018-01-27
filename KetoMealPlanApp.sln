@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KetoMealPlanApp", "KetoMealPlanApp\KetoMealPlanApp.csproj", "{C124BF66-E0F5-4342-B2DF-33DB49EC4188}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KetoMealPlanAppUI", "KetoMealPlanAppUI\KetoMealPlanAppUI.csproj", "{52A7BFFB-E657-473D-AEAC-CB763B6409B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KetoMealPlanAppUI.Tests", "KetoMealPlanAppUI.Tests\KetoMealPlanAppUI.Tests.csproj", "{84ACB47B-CD7B-4999-9D13-80D14651C3D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C124BF66-E0F5-4342-B2DF-33DB49EC4188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C124BF66-E0F5-4342-B2DF-33DB49EC4188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C124BF66-E0F5-4342-B2DF-33DB49EC4188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52A7BFFB-E657-473D-AEAC-CB763B6409B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A7BFFB-E657-473D-AEAC-CB763B6409B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A7BFFB-E657-473D-AEAC-CB763B6409B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A7BFFB-E657-473D-AEAC-CB763B6409B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84ACB47B-CD7B-4999-9D13-80D14651C3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84ACB47B-CD7B-4999-9D13-80D14651C3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84ACB47B-CD7B-4999-9D13-80D14651C3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84ACB47B-CD7B-4999-9D13-80D14651C3D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

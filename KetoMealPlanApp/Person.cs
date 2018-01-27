@@ -75,6 +75,9 @@ namespace KetoMealPlanApp
         public double ProteinPercentageDaily { get; private set; }
         public double NetCarbsPercentageDaily { get; private set; }
 
+        public Person()
+        {
+        }
 
         public Person(int age, double height, double weight, GenderType gender,
             double bodyFat, ActivityLevelType activityLevel)
