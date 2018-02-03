@@ -8,10 +8,10 @@ namespace KetoMealPlanApp
     {
         private static KetoAppModel db = new KetoAppModel();
 
-        public static Person CreatePerson(int age, double height, double weight, GenderType gender, 
+        public static Person CreatePerson(string email, int age, double height, double weight, GenderType gender, 
             double bodyFat, ActivityLevelType activityLevel)
         {
-            var person = new Person(age, height, weight, gender, bodyFat, activityLevel);
+            var person = new Person(email, age, height, weight, gender, bodyFat, activityLevel);
             db.Persons.Add(person);
             db.SaveChanges();
             return person;

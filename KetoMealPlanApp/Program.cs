@@ -13,6 +13,9 @@ namespace KetoMealPlanApp
             Console.WriteLine("*******************************************");
             Console.WriteLine("Welcome to KetoMealPlanApp");
             Console.WriteLine("*******************************************");
+            Console.Write("Please enter your email address: ");
+            var email = Console.ReadLine();
+
             Console.Write("Please enter your age: ");
             var age = Convert.ToInt32(Console.ReadLine());
 
@@ -44,7 +47,7 @@ namespace KetoMealPlanApp
             Console.Write("my activity level: ");
             var activityLevel = Convert.ToInt32(Console.ReadLine());
 
-            var person = Planner.CreatePerson(age, height, weight, (GenderType)gender,
+            var person = Planner.CreatePerson(email, age, height, weight, (GenderType)gender,
                 bodyFat, (ActivityLevelType)activityLevel);
 
             //var person = Planner.CreatePerson(37, 170, 70.5, GenderType.Female,

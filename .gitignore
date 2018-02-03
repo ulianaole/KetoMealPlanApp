@@ -9,3 +9,5 @@
 /KetoMealPlanAppUI/bin/Debug
 /.vs
 /KetoMealPlanApp/obj/Release
+/KetoMealPlanAppUI.Tests/bin/Debug
+/KetoMealPlanAppUI.Tests/obj/Debug

@@ -48,13 +48,11 @@ namespace KetoMealPlanAppUI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Age,Height,Weight,Gender,BodyFat,ActivityLevel,WeightLossCalories,FatKcalDaily,ProteinKcalDaily,NetCarbsKcalDaily,FatGramsDaily,ProteinGramsDaily,NetCarbsGramsDaily,FatPercentageDaily,ProteinPercentageDaily,NetCarbsPercentageDaily")] Person person)
+        public ActionResult Create([Bind(Include = "UserId,Email,Age,Height,Weight,Gender,BodyFat,ActivityLevel,WeightLossCalories,FatKcalDaily,ProteinKcalDaily,NetCarbsKcalDaily,FatGramsDaily,ProteinGramsDaily,NetCarbsGramsDaily,FatPercentageDaily,ProteinPercentageDaily,NetCarbsPercentageDaily")] Person person)
         {
             if (ModelState.IsValid)
             {
-                //db.Persons.Add(person);
-                //db.SaveChanges();
-                Planner.CreatePerson(person.Age, person.Height, person.Weight, person.Gender, person.BodyFat, person.ActivityLevel);
+                Planner.CreatePerson(person.Email, person.Age, person.Height, person.Weight, person.Gender, person.BodyFat, person.ActivityLevel);
                 return RedirectToAction("Index");
             }
 
@@ -81,7 +79,7 @@ namespace KetoMealPlanAppUI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,Age,Height,Weight,Gender,BodyFat,ActivityLevel,WeightLossCalories,FatKcalDaily,ProteinKcalDaily,NetCarbsKcalDaily,FatGramsDaily,ProteinGramsDaily,NetCarbsGramsDaily,FatPercentageDaily,ProteinPercentageDaily,NetCarbsPercentageDaily")] Person person)
+        public ActionResult Edit([Bind(Include = "UserId,Email,Age,Height,Weight,Gender,BodyFat,ActivityLevel,WeightLossCalories,FatKcalDaily,ProteinKcalDaily,NetCarbsKcalDaily,FatGramsDaily,ProteinGramsDaily,NetCarbsGramsDaily,FatPercentageDaily,ProteinPercentageDaily,NetCarbsPercentageDaily")] Person person)
         {
             if (ModelState.IsValid)
             {

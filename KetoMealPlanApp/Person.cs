@@ -10,7 +10,7 @@ namespace KetoMealPlanApp
     public class Person
     {
         [Key]
-        public int UserId { get; private set; }
+        public int UserId { get; set; }
         [Required]
         public string Email { get; set; }
 
@@ -86,9 +86,10 @@ namespace KetoMealPlanApp
         {
         }
 
-        public Person(int age, double height, double weight, GenderType gender,
+        public Person(string email, int age, double height, double weight, GenderType gender,
             double bodyFat, ActivityLevelType activityLevel)
         {
+            Email = email;
             Age = age;
             Height = height;
             Weight = weight;
