@@ -15,9 +15,11 @@ namespace KetoMealPlanAppUI.Controllers
         private KetoAppModel db = new KetoAppModel();
 
         // GET: People
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.Persons.ToList());
+            var accounts = Planner.GetAllAccounts(HttpContext.User.Identity.Name);
+            return View(accounts);
         }
 
         // GET: People/Details/5
@@ -50,8 +52,9 @@ namespace KetoMealPlanAppUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Persons.Add(person);
-                db.SaveChanges();
+                //db.Persons.Add(person);
+                //db.SaveChanges();
+                Planner.CreatePerson(person.Age, person.Height, person.Weight, person.Gender, person.BodyFat, person.ActivityLevel);
                 return RedirectToAction("Index");
             }
 

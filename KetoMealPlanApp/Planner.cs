@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KetoMealPlanApp
 {
@@ -17,6 +15,24 @@ namespace KetoMealPlanApp
             db.Persons.Add(person);
             db.SaveChanges();
             return person;
+        }
+
+        public static Person EditPerson(Person person)
+        {
+            if (person == null)
+                throw new ArgumentNullException("account", "Invalid account");
+
+            var oldAccount = db.Persons.Find(person.UserId);
+            if (oldAccount == null)
+                throw new ArgumentOutOfRangeException("account", "Invalid accont number!");
+            db.Entry(oldAccount).CurrentValues.SetValues(person);
+            db.SaveChanges();
+            return person;
+        }
+
+        public static List<Person> GetAllAccounts(string emailAddress)
+        {
+            return db.Persons.Where(a => a.Email == emailAddress).ToList();
         }
 
         public static void CreateMeal(int calories, int fatGrams, int proteinGrams, int netCarbGrams,

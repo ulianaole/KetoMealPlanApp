@@ -11,13 +11,15 @@ namespace KetoMealPlanApp
     {
         [Key]
         public int UserId { get; private set; }
-        
-        private int age;
+        [Required]
+        public string Email { get; set; }
 
+        private int age;
+        [Required]
         public int Age
         {
             get { return age; }
-            private set
+            set
             {
                 if (value < 0)
                 {
@@ -33,23 +35,28 @@ namespace KetoMealPlanApp
         /// <summary>
         /// Height in cm
         /// </summary>
-        public double Height { get; private set; }
+        [Required]
+        public double Height { get; set; }
         /// <summary>
         /// Weight in kg
         /// </summary>
-        public double Weight { get; private set; }
+        [Required]
+        public double Weight { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public GenderType Gender { get; private set; }
+        [Required]
+        public GenderType Gender { get; set; }
         /// <summary>
         /// Body Fat % expressed as 0.00
         /// </summary>
-        public double BodyFat { get; private set; }
+        [Required]
+        public double BodyFat { get; set; }
         /// <summary>
         /// Activity level as index
         /// </summary>
-        public ActivityLevelType ActivityLevel { get; private set; }
+        [Required]
+        public ActivityLevelType ActivityLevel { get; set; }
 
         /// <summary>
         /// weight loss calories in kcal
